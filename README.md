@@ -28,5 +28,5 @@ DEFAULT_LOCALE | The locale to be used when the desired locale is not available 
 ```javascript
 const Locale = require('native-speaker')
 
-Locale.get('hello_world', 'en')
+const message = Locale.get('hello_world', 'en')
 ```
