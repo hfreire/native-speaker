@@ -11,9 +11,12 @@ const _ = require('lodash')
 
 const i18n = require('i18n')
 
+const { join } = require('path')
+
 const defaultOptions = {
   autoReload: false,
-  updateFiles: false
+  updateFiles: false,
+  localePath: join(__dirname, '../locale')
 }
 
 class NativeSpeaker {
