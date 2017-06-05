@@ -19,14 +19,14 @@ node install native-speaker
 
 ### How to use
 
-#### Available environment variables
-Variable | Description | Default value
-:---:|:---:|:---:
-DEFAULT_LOCALE | The locale to be used when the desired locale is not available | `en`
-
 #### Use it in your app
 ```javascript
 const Locale = require('native-speaker')
 
 const message = Locale.get('hello_world', 'en')
 ```
+
+#### Available environment variables
+Variable | Description | Default value
+:---:|:---:|:---:
+DEFAULT_LOCALE | The locale to be used when the desired locale is not available | `en`
