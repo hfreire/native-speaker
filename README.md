@@ -26,7 +26,8 @@ const Locale = require('native-speaker')
 const message = Locale.get('hello_world', 'en')
 ```
 
+
 #### Available environment variables
-Variable | Description | Default value
-:---:|:---:|:---:
-DEFAULT_LOCALE | The locale to be used when the desired locale is not available | `en`
+Variable | Description | Required | Default value
+:---:|:---:|:---:|:---:
+DEFAULT_LOCALE | The locale to be used when the desired locale is not available | false | `en`
