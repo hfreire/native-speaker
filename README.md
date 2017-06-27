@@ -14,7 +14,7 @@
 
 ### How to install
 ```
-node install native-speaker
+npm install native-speaker
 ```
 
 ### How to use
