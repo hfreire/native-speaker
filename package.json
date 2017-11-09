@@ -37,11 +37,6 @@
     "pre-git": "3.16.0",
     "testdouble": "3.2.6"
   },
-  "greenkeeper": {
-    "ignore": [
-      "semantic-release"
-    ]
-  },
   "config": {
     "pre-git": {
       "commit-msg": "conventional"
