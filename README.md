@@ -9,6 +9,8 @@
 [![Version](https://img.shields.io/npm/v/native-speaker.svg)](https://www.npmjs.com/package/native-speaker)
 [![Downloads](https://img.shields.io/npm/dt/native-speaker.svg)](https://www.npmjs.com/package/native-speaker) 
 
+> A modern language :cn: :us: localisation library built on top of i18n
+
 ### Features
 * Supports [Bluebird](https://github.com/petkaantonov/bluebird) :bird: promises :white_check_mark:
 
