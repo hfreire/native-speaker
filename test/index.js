@@ -2,16 +2,23 @@
  * Copyright (c) 2017, Hugo Freire <hugo@exec.sh>.
  *
  * This source code is licensed under the license found in the
- * LICENSE file in the root directory of this source tree.
+ * LICENSE.md file in the root directory of this source tree.
  */
-
-const NativeSpeaker = require('../src/native-speaker')
 
 describe('Module', () => {
   let subject
+  let NativeSpeaker
+
+  before(() => {
+    NativeSpeaker = td.object([])
+  })
+
+  afterEach(() => td.reset())
 
   describe('when loading', () => {
     beforeEach(() => {
+      td.replace('../src/native-speaker', NativeSpeaker)
+
       subject = require('../src/index')
     })
 
