@@ -11,7 +11,7 @@ git clone https://github.com/my-github-username/native-speaker
 
 Change current directory
 ```
-cd get-me-date
+cd native-speaker
 ```
 
 Install NPM dependencies
