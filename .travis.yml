@@ -8,19 +8,19 @@ notifications:
   email: false
   slack:
     rooms:
-      secure: IGDOx9X8wWdwCSVIb43rgyunulGz2/Zg4sj691+BZapg8TX8Wvc0RqkBJqwZUPaYJRld/pH40843+nGvg3/xr42UrlIM146dbc1zxcyiA6QbCwWP8e00tVHTUe39Ft0IfemKzISy3CrMBC02fCWBJGNnCU8VmHs5T6b3Kg9w7gnor9pMT9/KoviK0hxsponzzdNsA6+hPqVg2DxpxtRpc3komILdFn+I3MrBuHbsZozr4XWjydEuNjo9BMDV0w1knPRraKpUMLBJqVItdweISM4k1lnHrlalX3OfAgFu0+DpkNMraxsd6RdoDZV2hW5iyLg5IIr6U1+xvYwyQe9B+4wMD41WPx5Ykg2KAIMQ5Mmg2TjWFVj4NyBbbpuz0DhJuyR0i75dPd976xaCQaD85q17x6hFxUj5UluRr+sLx4aonb3NAha6Oz7BsGZ8ZNPxUMm5j7hwsIBHig/GAc+MR7Ts0BAVVOwetxH7VY52TDfaM3ThmrfuTcl9Ra/f10KV5eIdqNjz9uib37zl19Mb4li6uIC7DgTU8LflmTJBynLnAP4BTTqpEumeDy4PP2OvNdiWET79wNOCp5hs99FavXbRVt2kZT7y4I8cGIC8XRKKA7VxbuVv6QE2pjIOubE2vrxx7fl2PSClX9GSTDfdbD/rP+7LuKhxGOH+J/pnH6o=
+      secure: U7Ywsue16jB8753IncZfOZjf1xRi2byNGlbqI0OfidsRtLm3o3LQ5p9LqMT82u1auDFi7fGa8nIHteTkJ4HirFBTfukIlUDXQUKvLqhlZ5VBaBtk55yzF/FYf1qJi03jD8Bm/rNNvp9VCKcCXZnDQEHwwvSbOieQLvTT44ZpTBANlHbYdEGobKG1V3sVMyr5HfP+xUa1mQIfGUWezT0vPe1Tt0vl3j4Kf1ZXv3MmksVHz1LMkwX0urDK/0u+NU2ZwiJt5AxMoZ3OsJ0tiSXAg2dMoA0y4n2390c7Crn0ki2Y1nTre1g2OMmr8lg4741ga3r2pIlNjZ58/26dSZHKevVKcz8kSIUh4C1urb1Cok1b/6fGB/VUK0sGaSluj8QmjlEFyzQVoodoPIERdB1j/BwVOZdqq8I17PpymTN0AvsjA65TvmEVXCIgXWB1nsHswOT4q7uq/BpmHT3d3yXjaJC4Enj1x7XhFkmJ92fXn3ubLWxCS5/4MecPzksNg4xvXXGMML6jRXD7q5ayWmBhbihot9PAwXmckHb+RbjTzulF5oloq1SouCWh96Wsd2iZCa7cKpzcoGgaiQJlSkNgIVrMlBv3TySdlZhCDzwYdpF9raZ238GJFQDtFvX5ZhUTr7+wIWoToz6KAZsEETjL5npDbILA8J4xIfzpa9P8KxQ=
     on_success: never
     on_failure: always
     on_pull_requests: false
 install:
-  - npm install
+- npm install
 before_install:
-  - npm install -g greenkeeper-lockfile@1
+- npm install -g greenkeeper-lockfile@1
 before_script:
-  - npm prune
-  - greenkeeper-lockfile-update
+- npm prune
+- greenkeeper-lockfile-update
 after_success:
-  - npm run coveralls
-  - npm run semantic-release
+- npm run coveralls
+- npm run semantic-release
 after_script:
-  - greenkeeper-lockfile-upload
+- greenkeeper-lockfile-upload
