@@ -21,10 +21,10 @@ describe('Native Speaker', () => {
     })
 
     it('should require i18n with properties', () => {
-      subject.i18n.should.have.deep.property('.configure')
-      subject.i18n.should.have.deep.property('.getLocales')
-      subject.i18n.should.have.deep.property('.setLocale')
-      subject.i18n.should.have.deep.property('.__')
+      subject.i18n.should.have.deep.property('configure')
+      subject.i18n.should.have.deep.property('getLocales')
+      subject.i18n.should.have.deep.property('setLocale')
+      subject.i18n.should.have.deep.property('__')
     })
   })
 
