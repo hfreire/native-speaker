@@ -2,6 +2,7 @@
 
 [![](https://github.com/hfreire/native-speaker/workflows/ci/badge.svg)](https://github.com/hfreire/native-speaker/actions?workflow=ci)
 [![Coverage Status](https://coveralls.io/repos/github/hfreire/native-speaker/badge.svg?branch=master)](https://coveralls.io/github/hfreire/native-speaker?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/hfreire/native-speaker/badge.svg)](https://snyk.io/test/github/hfreire/native-speaker)
 [![](https://img.shields.io/github/release/hfreire/native-speaker.svg)](https://github.com/hfreire/native-speaker/releases)
 [![Version](https://img.shields.io/npm/v/native-speaker.svg)](https://www.npmjs.com/package/native-speaker)
 [![Downloads](https://img.shields.io/npm/dt/native-speaker.svg)](https://www.npmjs.com/package/native-speaker)
