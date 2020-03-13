@@ -18,7 +18,7 @@
   "homepage": "https://github.com/hfreire/native-speaker#readme",
   "dependencies": {
     "i18n": "0.8.5",
-    "lodash": "4.17.15"
+    "lodash": "4.17.12"
   },
   "devDependencies": {
     "@babel/cli": "7.7.0",
