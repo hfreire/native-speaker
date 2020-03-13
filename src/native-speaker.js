@@ -5,41 +5,37 @@
  * LICENSE.md file in the root directory of this source tree.
  */
 
-const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE || 'en'
+import defaults from 'lodash/defaults'
+import includes from 'lodash/includes'
+import random from 'lodash/random'
+import i18n from 'i18n'
 
-const _ = require('lodash')
-
-const i18n = require('i18n')
-
-const { join } = require('path')
+const { DEFAULT_LOCALE = 'en' } = process.env
 
 const defaultOptions = {
+  locales: [],
   autoReload: false,
-  updateFiles: false,
-  localePath: join(__dirname, '../locale')
+  updateFiles: false
 }
 
 class NativeSpeaker {
-  constructor (options = {}) {
+  constructor(options = {}) {
     this.i18n = i18n
 
     this.configure(options)
   }
 
-  configure (options = {}) {
-    this.options = _.defaults(options, defaultOptions)
+  configure(options = {}) {
+    this.options = defaults(options, defaultOptions)
 
-    const i18nOptions = _.omit(this.options, 'localePath')
-    i18nOptions.directory = this.options.localePath
-
-    this.i18n.configure(i18nOptions)
+    this.i18n.configure(options)
   }
 
-  get (locale, name, ...args) {
-    if (_.includes(this.i18n.getLocales(), locale)) {
+  get(locale, name, ...args) {
+    if (includes(this.i18n.getLocales(), locale)) {
       this.i18n.setLocale(locale)
     } else {
-      if (!_.includes(this.i18n.getLocales(), DEFAULT_LOCALE)) {
+      if (!includes(this.i18n.getLocales(), DEFAULT_LOCALE)) {
         throw new Error(`Default locale ${DEFAULT_LOCALE} not found`)
       }
 
@@ -48,8 +44,10 @@ class NativeSpeaker {
 
     const message = this.i18n.__(name, ...args)
 
-    return message instanceof Array ? message[ _.random(0, message.length - 1) ] : message
+    return message instanceof Array
+      ? message[random(0, message.length - 1)]
+      : message
   }
 }
 
-module.exports = new NativeSpeaker()
+export default new NativeSpeaker()

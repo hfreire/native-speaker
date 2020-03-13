@@ -5,25 +5,13 @@
  * LICENSE.md file in the root directory of this source tree.
  */
 
+import NativeSpeaker from '../src/native-speaker'
+import subject from '../src/index'
+
 describe('Module', () => {
-  let subject
-  let NativeSpeaker
-
-  before(() => {
-    NativeSpeaker = td.object([])
-  })
-
-  afterEach(() => td.reset())
-
   describe('when loading', () => {
-    beforeEach(() => {
-      td.replace('../src/native-speaker', NativeSpeaker)
-
-      subject = require('../src/index')
-    })
-
-    it('should export native speaker', () => {
-      subject.should.be.equal(NativeSpeaker)
+    it('should export native speaker as default', () => {
+      expect(subject).toBe(NativeSpeaker)
     })
   })
 })

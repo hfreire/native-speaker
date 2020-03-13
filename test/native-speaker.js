@@ -5,106 +5,88 @@
  * LICENSE.md file in the root directory of this source tree.
  */
 
+import i18n from 'i18n'
+import subject from '../src/native-speaker'
+
+jest.mock('i18n')
+
 describe('Native Speaker', () => {
-  let subject
-  let i18n
-
-  before(() => {
-    i18n = td.object([ 'configure', 'getLocales', 'setLocale', '__' ])
-  })
-
-  afterEach(() => td.reset())
-
   describe('when constructing', () => {
-    beforeEach(() => {
-      subject = require('../src/native-speaker')
-    })
-
-    it('should require i18n with properties', () => {
-      subject.i18n.should.have.deep.property('configure')
-      subject.i18n.should.have.deep.property('getLocales')
-      subject.i18n.should.have.deep.property('setLocale')
-      subject.i18n.should.have.deep.property('__')
+    it('should call i18n configure', () => {
+      expect(i18n.configure).toHaveBeenCalled()
     })
   })
 
   describe('when configuring', () => {
-    const localePath = 'my-locale-path'
-    const options = { localePath }
-
-    beforeEach(() => {
-      td.replace('i18n', i18n)
-
-      subject = require('../src/native-speaker')
-    })
+    const directory = 'my-locale-path'
+    const options = { directory }
 
     it('should call i18n configure', () => {
       subject.configure(options)
 
-      td.verify(i18n.configure(), { ignoreExtraArgs: true, times: 2 })
+      expect(i18n.configure).toHaveBeenCalledWith(options)
     })
   })
 
   describe('when getting a supported locale', () => {
     const locale = 'my-locale'
+    const locales = [locale]
     const name = 'my-name'
     const message = 'my-message'
 
     beforeEach(() => {
-      td.replace('i18n', i18n)
-      td.when(i18n.getLocales()).thenReturn([ locale ])
-      td.when(i18n.__(name)).thenReturn(message)
+      i18n.getLocales = jest.fn().mockReturnValue(locales)
 
-      subject = require('../src/native-speaker')
+      i18n.__ = jest.fn().mockReturnValue(message)
     })
 
-    it('should invoke i18n setLocale', () => {
+    it('should invoke i18n setLocale with given locale', () => {
       subject.get(locale, name)
 
-      td.verify(i18n.setLocale(locale), { times: 1 })
+      expect(i18n.setLocale).toHaveBeenCalledWith(locale)
     })
 
     it('should return locale message', () => {
-      const _message = subject.get(locale, name)
+      const result = subject.get(locale, name)
 
-      _message.should.be.equal(message)
+      expect(result).toBe(message)
     })
   })
 
   describe('when getting a non-supported locale', () => {
-    const nonSupportedLocale = 'my-nonsupported-locale'
-    const defaultLocale = 'en'
+    const locales = ['en']
     const name = 'my-name'
     const message = 'my-message'
 
     beforeEach(() => {
-      td.replace('i18n', i18n)
-      td.when(i18n.getLocales()).thenReturn([ defaultLocale ])
-      td.when(i18n.__(name)).thenReturn(message)
+      i18n.getLocales = jest.fn().mockReturnValue(locales)
 
-      subject = require('../src/native-speaker')
+      i18n.__ = jest.fn().mockReturnValue(message)
+    })
+
+    it('should invoke i18n setLocale with default locale', () => {
+      subject.get('unknown-locale', name)
+
+      expect(i18n.setLocale).toHaveBeenCalledWith('en')
     })
 
     it('should return default locale message', () => {
-      const _message = subject.get(nonSupportedLocale, name)
+      const result = subject.get('unknown-locale', name)
 
-      _message.should.be.equal(message)
+      expect(result).toBe(message)
     })
   })
 
   describe('when getting and default locale is not found', () => {
-    const locale = 'my-locale'
+    const locales = []
     const name = 'my-name'
 
     beforeEach(() => {
-      td.replace('i18n', i18n)
-      td.when(i18n.getLocales()).thenReturn([])
-
-      subject = require('../src/native-speaker')
+      i18n.getLocales = jest.fn().mockReturnValue(locales)
     })
 
     it('should throw default locale not found error', () => {
-      should.Throw(() => subject.get(locale, name), Error)
+      expect(() => subject.get('en', name)).toThrowError('Default locale en not found')
     })
   })
 })

@@ -10,7 +10,7 @@
 > A modern language :cn: :us: localisation library built on top of i18n
 
 ### Features
-* Supports [Bluebird](https://github.com/petkaantonov/bluebird) :bird: promises :white_check_mark:
+* Supports multiple randomly picked message localisations :white_check_mark:
 
 ### How to install
 ```
@@ -23,7 +23,7 @@ npm install native-speaker
 ```javascript
 const Locale = require('native-speaker')
 
-const message = Locale.get('hello_world', 'en')
+const message = Locale.get('en', 'hello_world')
 ```
 
 #### Available environment variables

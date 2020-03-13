@@ -17,30 +17,36 @@
   },
   "homepage": "https://github.com/hfreire/native-speaker#readme",
   "dependencies": {
-    "i18n": "0.8.5"
+    "i18n": "0.8.5",
+    "lodash": "4.17.15"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-preset-env": "1.7.0",
-    "chai": "4.2.0",
-    "chai-as-promised": "7.1.1",
-    "coveralls": "3.0.9",
+    "@babel/cli": "7.7.0",
+    "@babel/core": "7.7.2",
+    "@babel/preset-env": "7.7.1",
+    "coveralls": "3.0.7",
     "eslint": "6.8.0",
-    "eslint-config-hfreire": "2.0.7",
-    "eslint-plugin-import": "2.20.1",
-    "eslint-plugin-jest": "23.8.2",
-    "eslint-plugin-json": "2.1.0",
-    "eslint-plugin-mocha": "6.3.0",
-    "eslint-plugin-node": "11.0.0",
-    "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-standard": "4.0.1",
-    "eslint-plugin-unicorn": "17.2.0",
-    "istanbul": "0.4.5",
-    "mocha": "7.1.0",
+    "eslint-config-hfreire": "3.0.4",
+    "jest": "24.9.0",
+    "prettier": "1.19.1",
     "pre-git": "3.17.1",
-    "semantic-release": "17.0.4",
-    "snyk": "1.298.1",
-    "testdouble": "3.13.0"
+    "semantic-release": "15.13.30",
+    "snyk": "1.243.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupTestFrameworkScriptFile": "./test/helper.js",
+    "testMatch": [
+      "<rootDir>/test/**/*.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "./test/helper.js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
   },
   "config": {
     "pre-git": {
@@ -50,17 +56,17 @@
   },
   "snyk": true,
   "scripts": {
+    "babel": "./node_modules/.bin/babel ./src --out-dir ./lib --copy-files",
     "eslint": "node_modules/.bin/eslint --ext .json --ext .js .",
-    "istanbul": "node_modules/.bin/istanbul cover --include-all-sources --root src --print detail ./node_modules/mocha/bin/_mocha -- --recursive test",
+    "jest": "./node_modules/.bin/jest",
     "snyk:test": "./node_modules/.bin/snyk test",
     "snyk:protect": "./node_modules/.bin/snyk protect",
-    "babel": "mkdir -p lib && ./node_modules/.bin/babel src/ -d lib",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "semantic-release": "./node_modules/.bin/semantic-release",
     "clean": "rm -rf lib coverage",
     "lint": "npm run eslint",
     "prepare": "npm run snyk:protect",
-    "test": "npm run clean && npm run lint && npm run istanbul",
+    "test": "npm run clean && npm run lint && npm run jest",
     "compile": "npm run clean && npm run babel",
     "commit": "./node_modules/.bin/commit-wizard",
     "prepublish": "npm run compile"
