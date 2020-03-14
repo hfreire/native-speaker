@@ -5,4 +5,4 @@
  * LICENSE.md file in the root directory of this source tree.
  */
 
-export { default } from './native-speaker'
+export { default, NativeSpeaker } from './native-speaker'

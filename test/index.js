@@ -5,13 +5,17 @@
  * LICENSE.md file in the root directory of this source tree.
  */
 
-import NativeSpeaker from '../src/native-speaker'
-import subject from '../src/index'
+import instance, { NativeSpeaker } from '../src/native-speaker'
+import defaultSubject, { NativeSpeaker as namedSubject } from '../src/index'
 
 describe('Module', () => {
-  describe('when loading', () => {
-    it('should export native speaker as default', () => {
-      expect(subject).toBe(NativeSpeaker)
+  describe('when exporting', () => {
+    it('should export native speaker instance as default', () => {
+      expect(defaultSubject).toBe(instance)
+    })
+
+    it('should export native speaker class', () => {
+      expect(namedSubject).toBe(NativeSpeaker)
     })
   })
 })

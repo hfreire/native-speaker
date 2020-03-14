@@ -18,7 +18,7 @@ const defaultOptions = {
   syncFiles: true
 }
 
-class NativeSpeaker {
+export class NativeSpeaker {
   constructor(options = { locales: [DEFAULT_LOCALE] }) {
     this._i18n = i18n
 
