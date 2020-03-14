@@ -14,7 +14,8 @@ const { DEFAULT_LOCALE = 'en' } = process.env
 const defaultOptions = {
   defaultLocale: DEFAULT_LOCALE,
   autoReload: false,
-  updateFiles: false
+  updateFiles: false,
+  syncFiles: true
 }
 
 class NativeSpeaker {
