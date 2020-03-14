@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Hugo Freire <hugo@exec.sh>.
+ * Copyright (c) 2020, Hugo Freire <hugo@exec.sh>.
  *
  * This source code is licensed under the license found in the
  * LICENSE.md file in the root directory of this source tree.
@@ -44,12 +44,6 @@ describe('Native Speaker', () => {
       i18n.getLocales = jest.fn().mockReturnValue(locales)
 
       i18n.__ = jest.fn().mockReturnValue(message)
-    })
-
-    it('should invoke i18n setLocale with given locale', () => {
-      subject.get(locale, name)
-
-      expect(i18n.setLocale).toHaveBeenCalledWith(locale)
     })
 
     it('should return locale message', () => {
