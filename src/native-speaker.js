@@ -31,8 +31,8 @@ export class NativeSpeaker {
     this._i18n.configure(this._options)
   }
 
-  get(locale = this._options.defaultLocale, phrase, ...args) {
-    const message = this._i18n.__({ phrase, locale }, ...args)
+  get(...args) {
+    const message = this._i18n.__(...args)
 
     return message instanceof Array
       ? message[random(0, message.length - 1)]

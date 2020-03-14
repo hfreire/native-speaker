@@ -35,37 +35,15 @@ describe('Native Speaker', () => {
   })
 
   describe('when getting a supported locale', () => {
-    const locale = 'my-locale'
-    const locales = [locale]
     const name = 'my-name'
     const message = 'my-message'
 
     beforeEach(() => {
-      i18n.getLocales = jest.fn().mockReturnValue(locales)
-
       i18n.__ = jest.fn().mockReturnValue(message)
     })
 
     it('should return locale message', () => {
-      const result = subject.get(locale, name)
-
-      expect(result).toBe(message)
-    })
-  })
-
-  describe('when getting a non-supported locale', () => {
-    const locales = ['en']
-    const name = 'my-name'
-    const message = 'my-message'
-
-    beforeEach(() => {
-      i18n.getLocales = jest.fn().mockReturnValue(locales)
-
-      i18n.__ = jest.fn().mockReturnValue(message)
-    })
-
-    it('should return default locale message', () => {
-      const result = subject.get('unknown-locale', name)
+      const result = subject.get(name)
 
       expect(result).toBe(message)
     })
