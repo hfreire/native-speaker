@@ -21,10 +21,16 @@ describe('Native Speaker', () => {
     const directory = 'my-locale-path'
     const options = { directory }
 
+    beforeEach(() => {
+      jest.resetAllMocks()
+    })
+
     it('should call i18n configure', () => {
       subject.configure(options)
 
-      expect(i18n.configure).toHaveBeenCalledWith(options)
+      expect(i18n.configure).toHaveBeenCalledWith(
+        expect.objectContaining({ directory })
+      )
     })
   })
 
@@ -64,29 +70,10 @@ describe('Native Speaker', () => {
       i18n.__ = jest.fn().mockReturnValue(message)
     })
 
-    it('should invoke i18n setLocale with default locale', () => {
-      subject.get('unknown-locale', name)
-
-      expect(i18n.setLocale).toHaveBeenCalledWith('en')
-    })
-
     it('should return default locale message', () => {
       const result = subject.get('unknown-locale', name)
 
       expect(result).toBe(message)
-    })
-  })
-
-  describe('when getting and default locale is not found', () => {
-    const locales = []
-    const name = 'my-name'
-
-    beforeEach(() => {
-      i18n.getLocales = jest.fn().mockReturnValue(locales)
-    })
-
-    it('should throw default locale not found error', () => {
-      expect(() => subject.get('en', name)).toThrowError('Default locale en not found')
     })
   })
 })

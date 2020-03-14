@@ -5,44 +5,33 @@
  * LICENSE.md file in the root directory of this source tree.
  */
 
-import defaults from 'lodash/defaults'
-import includes from 'lodash/includes'
+import defaultsDeep from 'lodash/defaultsDeep'
 import random from 'lodash/random'
 import i18n from 'i18n'
 
 const { DEFAULT_LOCALE = 'en' } = process.env
 
 const defaultOptions = {
-  locales: [],
+  defaultLocale: DEFAULT_LOCALE,
   autoReload: false,
   updateFiles: false
 }
 
 class NativeSpeaker {
-  constructor(options = {}) {
-    this.i18n = i18n
+  constructor(options = { locales: [DEFAULT_LOCALE] }) {
+    this._i18n = i18n
 
     this.configure(options)
   }
 
   configure(options = {}) {
-    this.options = defaults(options, defaultOptions)
+    this._options = defaultsDeep({}, options, defaultOptions)
 
-    this.i18n.configure(options)
+    this._i18n.configure(this._options)
   }
 
-  get(locale, name, ...args) {
-    if (includes(this.i18n.getLocales(), locale)) {
-      this.i18n.setLocale(locale)
-    } else {
-      if (!includes(this.i18n.getLocales(), DEFAULT_LOCALE)) {
-        throw new Error(`Default locale ${DEFAULT_LOCALE} not found`)
-      }
-
-      this.i18n.setLocale(DEFAULT_LOCALE)
-    }
-
-    const message = this.i18n.__(name, ...args)
+  get(locale = this._options.defaultLocale, phrase, ...args) {
+    const message = this._i18n.__({ phrase, locale }, ...args)
 
     return message instanceof Array
       ? message[random(0, message.length - 1)]
