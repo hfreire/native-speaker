@@ -18,7 +18,8 @@
   "homepage": "https://github.com/hfreire/native-speaker#readme",
   "dependencies": {
     "i18n": "0.9.0",
-    "lodash": "4.17.15"
+    "lodash": "4.17.15",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@babel/cli": "7.8.4",
@@ -30,8 +31,7 @@
     "jest": "25.5.3",
     "prettier": "1.19.1",
     "pre-git": "3.17.1",
-    "semantic-release": "17.0.7",
-    "snyk": "1.316.1"
+    "semantic-release": "17.0.7"
   },
   "jest": {
     "testEnvironment": "node",
@@ -65,10 +65,11 @@
     "semantic-release": "./node_modules/.bin/semantic-release",
     "clean": "rm -rf lib coverage",
     "lint": "npm run eslint",
-    "prepare": "npm run snyk:protect",
+    "prepare": "npm run snyk-protect && npm run snyk:protect",
     "test": "npm run clean && npm run lint && npm run jest",
     "compile": "npm run clean && npm run babel",
     "commit": "./node_modules/.bin/commit-wizard",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "snyk-protect": "snyk protect"
   }
 }
