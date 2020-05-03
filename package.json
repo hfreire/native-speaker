@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/hfreire/native-speaker#readme",
   "dependencies": {
-    "i18n": "0.9.0",
+    "i18n": "0.9.1",
     "lodash": "4.17.15"
   },
   "devDependencies": {
