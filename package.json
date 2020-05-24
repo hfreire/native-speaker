@@ -30,7 +30,7 @@
     "jest": "26.0.1",
     "prettier": "1.19.1",
     "pre-git": "3.17.1",
-    "semantic-release": "17.0.7",
+    "semantic-release": "17.0.8",
     "snyk": "1.327.0"
   },
   "jest": {
