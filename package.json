@@ -31,7 +31,7 @@
     "prettier": "1.19.1",
     "pre-git": "3.17.1",
     "semantic-release": "17.1.0",
-    "snyk": "1.347.1"
+    "snyk": "1.348.0"
   },
   "jest": {
     "testEnvironment": "node",
