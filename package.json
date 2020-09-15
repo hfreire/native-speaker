@@ -28,7 +28,7 @@
     "eslint": "6.8.0",
     "eslint-config-hfreire": "3.0.41",
     "jest": "26.4.2",
-    "prettier": "1.19.1",
+    "prettier": "2.1.1",
     "pre-git": "3.17.1",
     "semantic-release": "17.1.1",
     "snyk": "1.398.0"
